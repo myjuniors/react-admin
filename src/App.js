@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { Button, message } from 'antd'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Login from './component/login/login.jsx'
+import Admin from './component/admin/admin.jsx'
 
 export default class App extends Component {
-  tipsHandle = () => {
-    message.success('点击成功了。。。')
-  }
-  render () {
+  render() {
     return (
-      <div>
-        <Button type="primary" onClick={ this.tipsHandle }>测试代码</Button>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/" component={Admin}></Route>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
