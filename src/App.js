@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Button, message } from 'antd'
 
-function App() {
-  return (
-    <div>
-      测试代码
-    </div>
-  )
+export default class App extends Component {
+  tipsHandle = () => {
+    message.success('点击成功了。。。')
+  }
+  render () {
+    return (
+      <div>
+        <Button type="primary" onClick={ this.tipsHandle }>测试代码</Button>
+      </div>
+    )
+  }
 }
-
-export default App
