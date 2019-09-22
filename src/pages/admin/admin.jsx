@@ -8,8 +8,8 @@ export default class Admin extends Component {
 
   render() {
     const user = memoryUntils.user
-    if (!user || !user.id) {
-      return <Redirect to='/logiin' />
+    if (!user || !user._id) {
+      return <Redirect to='/login' />
     }
     return (
       <div>
