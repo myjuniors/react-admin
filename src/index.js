@@ -5,7 +5,7 @@ import memoryUntils from './untils/memory'
 import storeUntils from './untils/store'
 
 const user = storeUntils.getUser()
-if (user && user.id) {
+if (user && user._id) {
   memoryUntils.user = user
 }
 

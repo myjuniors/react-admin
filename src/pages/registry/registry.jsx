@@ -26,7 +26,7 @@ class Registry extends Component {
           message.success('注册成功了')
           this.props.history.replace('/login')
         } else {
-          message.error('登录错误：' + result.message)
+          message.error('注册错误：' + result.message)
         }
       } else {
         console.log('校验失败')
