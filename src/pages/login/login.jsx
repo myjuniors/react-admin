@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button } from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
+import { Redirect } from 'react-router-dom'
+
 import * as Untils from '../../untils'
+import memoryUntils from '../../untils/memory'
+import storeUntils from '../../untils/store'
+import { reqLogin } from '../../api/common'
 
 import './login.less'
 // 不能在 import 之前赋值
@@ -14,16 +19,29 @@ class Login extends Component {
 
     form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('提交表单成功了', values)
-        this.props.history.push('/admin')
+        const {username, password} = values
+        const result = await reqLogin({username, password})
+        if (result.resultCode === 0) {
+          message.success('登录成功了')
+          const user = result.data
+          storeUntils.saveUser(user)
+          memoryUntils.user = user
+          this.props.history.replace('/')
+        } else {
+          message.error('登录错误：' + result.msg)
+        }
       } else {
-        console.log(err)
+        console.log('校验失败')
       }
     })
   }
   render() {
     // 得到的是一个高级函数，用来验证表单项
     const { getFieldDecorator } = this.props.form
+    const user = memoryUntils.user
+    if (user && user.id) {
+      return <Redirect to='/' />
+    }
 
     return (
       <div className="login-container">
