@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Avatar, Menu, Dropdown, Icon, message } from 'antd'
+import { Avatar, Menu, Dropdown, Icon } from 'antd'
 import { withRouter } from 'react-router-dom'
 import storeUntils from '../../untils/store'
 
@@ -27,7 +27,7 @@ class Header extends Component {
         <div className="left-title"></div>
         <div className="user-info">
           <Dropdown overlay={menu} trigger={['click']}>
-            <a className="ant-dropdown-link" href="#">
+            <a className="ant-dropdown-link" href="/">
               <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               <Icon type="down" />
             </a>

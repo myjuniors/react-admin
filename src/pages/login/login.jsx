@@ -92,7 +92,7 @@ class Login extends Component {
                 登录
               </Button>
               <div className="registry-btn">
-                还没有账号？<a href="" onClick={this.handleRegistry}>前往注册</a>
+                还没有账号？<a href="/registry" onClick={this.handleRegistry}>前往注册</a>
               </div>
             </Item>
           </Form>

@@ -82,7 +82,7 @@ class Registry extends Component {
                 注册
               </Button>
               <div className="registry-btn">
-                已有账号？<a href="" onClick={this.handleLogin}>前往登录</a>
+                已有账号？<a href="/login" onClick={this.handleLogin}>前往登录</a>
               </div>
             </Item>
           </Form>
