@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, Modal } from 'antd'
 import moment from 'moment'
 
 import storeUntils from '../../untils/store'
@@ -9,6 +9,8 @@ import { reqWeather } from '../../api/common'
 import menuList from '../../config/menu-list'
 
 import './header.less'
+
+const { confirm } = Modal
 
 class Header extends Component {
   state = {
@@ -43,10 +45,21 @@ class Header extends Component {
     })
     return title
   }
+  showConfirm = () => {
+    confirm({
+      title: '你确定要退出登录吗？',
+      okText: '确定',
+      okType: 'warning',
+      cancelText: '取消',
+      onOk: () => {
+        storeUntils.removeUser()
+        memoryUntils.user = {}
+        this.props.history.replace('/login')
+      }
+    })
+  }
   handleLogout = () => {
-    storeUntils.removeUser()
-    memoryUntils.user = {}
-    this.props.history.replace('/login')
+    this.showConfirm()
   }
   componentDidMount () {
     this.timer = setInterval(() => {
