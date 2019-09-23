@@ -45,6 +45,7 @@ class LeftNav extends Component {
       return pre
     }, [])
   }
+  // 可以放同步的代码，只执行一次
   componentWillMount () {
     this.menuNodes = this.getMenuNodes(menuList)
   }
