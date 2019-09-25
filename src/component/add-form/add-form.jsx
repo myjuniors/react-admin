@@ -12,7 +12,6 @@ class AddForm extends Component {
   }
   componentDidMount () {
     const form = this.props.form
-    console.log(form)
     this.props.sendForm(form)
   }
   render() {
@@ -24,7 +23,7 @@ class AddForm extends Component {
         <Form>
           <Item>
             { 
-              getFieldDecorator('parentId', {
+              getFieldDecorator('categoryId', {
                 initialValue: '0'
               })(
                 <Select>
@@ -41,7 +40,10 @@ class AddForm extends Component {
           <Item>
             { 
               getFieldDecorator('categoryName', {
-                initialValue: ''
+                initialValue: '',
+                rules: [
+                  { required: true, message: '分类名称不能为空' }
+                ]
               })(
                 <Input
                   placeholder="请输入要添加的分类名称" 
