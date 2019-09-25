@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Button, Modal } from 'antd'
-import moment from 'moment'
 
 import storeUntils from '../../untils/store'
 import memoryUntils from '../../untils/memory'
 import { reqWeather } from '../../api/common'
 import menuList from '../../config/menu-list'
+import { getTime } from '../../filter/format-time'
 
 import './header.less'
 
@@ -17,10 +17,6 @@ class Header extends Component {
     time: '',
     dayPictureUrl: '',
     weather: ''
-  }
-  getTime = () => {
-    const time = Date.now()
-    return moment(time).format('YYYY-MM-DD HH:mm:ss')
   }
   getWeather = async (city) => {
     const { dayPictureUrl, weather } = await reqWeather(city)
@@ -63,7 +59,7 @@ class Header extends Component {
   }
   componentDidMount () {
     this.timer = setInterval(() => {
-      const time = this.getTime()
+      const time = getTime(Date.now())
       this.setState({time})
     }, 1000)
     this.getWeather('北京')

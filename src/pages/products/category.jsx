@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Table, Button, message, Modal, Icon } from 'antd'
-import AddForm from '../../component/add-form/add-form'
-import UpdateForm from '../../component/update-form/update-form'
+import AddForm from '../../component/category/add-form/add-form'
+import UpdateForm from '../../component/category/update-form/update-form'
 import { reqAddCategory, reqCategoryList, reqUpdateCategory } from '../../api/category'
 
 export default class Category extends Component {
