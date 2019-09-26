@@ -5,9 +5,10 @@ import AddForm from '../../component/role/add-form/add-form'
 import AuthTree from '../../component/role/auth-tree/auth-tree'
 import { getTime } from '../../filter/format-time'
 import memoryUntils from '../../untils/memory'
+import storeUntils from '../../untils/store'
 import { reqAddRole, reqGetRoles, reqSetPremission } from '../../api/role'
 
-export default class Category extends Component {
+export default class Role extends Component {
   state = {
     showRoleModal: false,
     showPremissionModal: false,
@@ -52,12 +53,18 @@ export default class Category extends Component {
     role.authName = name
     role.meta.authTime = Date.now()
     const result = await reqSetPremission(role)
+
     if (result.resultCode === 0) {
+      if (memoryUntils.user.role_id === role._id) {
+        memoryUntils.user = {}
+        storeUntils.removeUser()
+        this.props.history.replace('/login')
+      }
       this.setState({
         showPremissionModal: false,
         roles: [...this.state.roles]
       })
-      message.success('权限设置成功了')
+      message.success('权限设置成功了，请重新登录')
     }
   }
   handleAddRole = () => {
