@@ -131,7 +131,15 @@ export default class Role extends Component {
             rowKey='_id'
             columns={this.columns}
             dataSource={roles}
-            rowSelection={{type: 'radio', selectedRowKeys: [role._id]}}
+            rowSelection={{
+              type: 'radio', 
+              selectedRowKeys: [role._id],
+              onSelect: (role) => {
+                this.setState({
+                  role
+                })
+              }
+            }}
             onRow={role => {
               return {
                 onClick: event => {
