@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Button, Modal } from 'antd'
 
-import storeUntils from '../../untils/store'
-import memoryUntils from '../../untils/memory'
 import { reqWeather } from '../../api/common'
 import menuList from '../../config/menu-list'
 import { getTime } from '../../filter/format-time'
+import { logout } from '../../reudx/actions'
 
 import './header.less'
 
@@ -48,9 +48,7 @@ class Header extends Component {
       okType: 'warning',
       cancelText: '取消',
       onOk: () => {
-        storeUntils.removeUser()
-        memoryUntils.user = {}
-        this.props.history.replace('/login')
+        this.props.logout()
       }
     })
   }
@@ -68,8 +66,10 @@ class Header extends Component {
     clearInterval(this.timer)
   }
   render() {
-    const username = memoryUntils.user.username
-    const title = this.getPageTitle()
+    const username = this.props.user.username
+    // const title = this.getPageTitle()
+    // 从props里面接收要显示的headTitle
+    const title = this.props.headTitle
     const { time, dayPictureUrl, weather } = this.state
     return (
       <div className="header">
@@ -92,4 +92,7 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header)
+export default connect(
+  state => ({headTitle: state.headTitle, user: state.user}),
+  { logout }
+)(withRouter(Header))
