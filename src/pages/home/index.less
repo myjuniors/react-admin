@@ -1,6 +1,45 @@
 .home {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: center;
-  margin-top: 100px;
+  padding: 40px 24px 24px;
+  background: #fff;
+  min-height: 880px;
+  position: relative;
+  .home-card {
+    float: left;
+  }
+
+  .home-content {
+    position: absolute;
+    top: 340px;
+    width: 96%;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+
+    .home-menu {
+      font-size: 20px;
+
+      span {
+        cursor: pointer;
+      }
+
+      .home-menu-active {
+        border-bottom: 2px solid #1DA57A;
+        color: #1DA57A;
+        padding: 0 0 16px 0;
+      }
+
+      .home-menu-visited {
+        margin-right: 40px;
+      }
+    }
+
+    .home-table-left {
+      float: left;
+      width: 60%;
+    }
+
+    .home-table-right {
+      float: right;
+      width: 330px;
+    }
+  }
 }
