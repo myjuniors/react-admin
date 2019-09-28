@@ -1,4 +1,9 @@
 ### 启动项目
 
-- cd react-admin
-- npm start
+```javascript
+  cd react-admin
+  npm install
+  npm start
+```
+### 项目预览效果
+![效果图](/test/images/admin.gif)
