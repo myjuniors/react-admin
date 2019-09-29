@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import store from './reudx/store'
+import store from './redux/store'
 import App from './App'
 import memoryUntils from './untils/memory'
 import storeUntils from './untils/store'
