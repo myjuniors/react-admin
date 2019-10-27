@@ -8,7 +8,7 @@ import logo from './images/left-logo.jpg'
 import menuList from '../../config/menu-list'
 import {
   setHeadTitle
-} from '../../reudx/actions'
+} from '../../redux/actions'
 const { SubMenu } = Menu
 
 class LeftNav extends Component {

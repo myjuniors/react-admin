@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Icon, Input, Button } from 'antd'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login } from '../../reudx/actions'
+import { login } from '../../redux/actions'
 
 import * as Untils from '../../untils'
 

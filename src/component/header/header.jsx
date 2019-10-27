@@ -6,7 +6,7 @@ import { Button, Modal } from 'antd'
 import { reqWeather } from '../../api/common'
 import menuList from '../../config/menu-list'
 import { getTime } from '../../filter/format-time'
-import { logout } from '../../reudx/actions'
+import { logout } from '../../redux/actions'
 
 import './header.less'
 
